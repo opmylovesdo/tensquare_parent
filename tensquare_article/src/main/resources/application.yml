@@ -13,3 +13,7 @@ spring:
     show-sql: true
   redis:
     host: ecs
+  data:
+    mongodb:
+      host: ecs
+      database: recruitdb
