@@ -39,6 +39,16 @@ public class UserController {
     @Autowired
     private JwtUtil jwtUtil;
 
+
+    @PutMapping("/{userid}/{friendid}/{num}")
+    public void updateFansCountAndFollowerCount(@PathVariable String userid,
+                                                @PathVariable String friendid,
+                                                @PathVariable int num){
+        userService.updateFansCountAndFollowerCount(userid, friendid, num);
+
+    }
+
+
     @PostMapping("/login")
     public Result login(@RequestBody User user){
 

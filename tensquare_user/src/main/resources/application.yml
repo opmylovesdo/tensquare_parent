@@ -19,3 +19,11 @@ jwt:
   config:
     key: luoluo
     ttl: 3600000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${server.port}

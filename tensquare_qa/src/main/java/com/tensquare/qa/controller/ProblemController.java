@@ -3,6 +3,8 @@ package com.tensquare.qa.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.netflix.discovery.converters.Auto;
+import com.tensquare.qa.client.LabelClient;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,15 @@ public class ProblemController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private LabelClient labelClient;
+
+    @GetMapping("/label/{labelid}")
+    public Result findLabelById(@PathVariable String labelid){
+        Result result = labelClient.findById(labelid);
+        return result;
+    }
 
     @GetMapping("/newlist/{label}/{page}/{size}")
     public Result newList(@PathVariable("label") String labelId, @PathVariable int page, @PathVariable int size) {

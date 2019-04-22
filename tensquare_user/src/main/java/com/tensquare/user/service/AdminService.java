@@ -20,6 +20,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import util.IdWorker;
 
 import com.tensquare.user.dao.AdminDao;
@@ -31,6 +32,7 @@ import com.tensquare.user.pojo.Admin;
  * @author Administrator
  */
 @Service
+@Transactional
 public class AdminService {
 
     @Autowired

@@ -17,3 +17,11 @@ spring:
     mongodb:
       host: ecs
       database: recruitdb
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${server.port}

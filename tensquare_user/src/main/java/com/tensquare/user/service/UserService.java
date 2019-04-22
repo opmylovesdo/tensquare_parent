@@ -21,6 +21,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import util.IdWorker;
 
 import com.tensquare.user.dao.UserDao;
@@ -33,6 +34,7 @@ import util.JwtUtil;
  * @author Administrator
  */
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -49,6 +51,12 @@ public class UserService {
 
     @Autowired
     private HttpServletRequest request;
+
+
+    public void updateFansCountAndFollowerCount(String userId, String friendId, int num){
+        userDao.updateFansCount(userId, num);
+        userDao.updateFollowerCount(friendId, num);
+    }
 
 
     public User login(User user) {
